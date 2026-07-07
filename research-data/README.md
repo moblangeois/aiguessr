@@ -2,7 +2,7 @@
 
 Pseudonymized data from two formative evaluation episodes of the AIGuessr serious game, reported in:
 
-> Langeois, M. (2026). Making AI materiality visible: design and formative evaluation of a serious game for management education. *Journal of Management Education* (submitted).
+> Blangeois, M. (2026). Making AI materiality visible: design and formative evaluation of a serious game for management education. *Journal of Management Education* (submitted).
 
 ## Episodes
 

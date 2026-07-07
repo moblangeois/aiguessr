@@ -2,7 +2,7 @@
 
 **A GeoGuessr-inspired serious game to discover the material footprint of AI**
 
-AIGuessr is a multiplayer web application designed for educational workshops. Players locate on a world map the places where AI resources are extracted, components are manufactured, data centers operate, and electronic waste ends up. The game covers the full lifecycle of AI infrastructure — from cobalt mines in the DRC to e-waste dumps in Ghana.
+AIGuessr is a multiplayer web application for educational workshops. Players locate on a world map the places where AI resources are extracted, components are manufactured, data centers operate, and electronic waste ends up. The game covers the full lifecycle of AI infrastructure, from cobalt mines in the DRC to e-waste dumps in Ghana.
 
 Built with React 19, Vite, Tailwind CSS 4, Leaflet, react-globe.gl, and Socket.IO for real-time multiplayer.
 
@@ -11,14 +11,14 @@ Built with React 19, Vite, Tailwind CSS 4, Leaflet, react-globe.gl, and Socket.I
 ## Features
 
 - **21 sourced questions** across 4 categories: extraction, production, data centers, e-waste
-- **Real-time multiplayer** via WebSocket — one presenter screen + student devices via QR code
+- **Real-time multiplayer** via WebSocket: one presenter screen plus student devices via QR code
 - **3D globe visualization** with react-globe.gl for question introductions
-- **Jigsaw classroom mode** — teams specialize in one category then teach others
+- **Jigsaw classroom mode**: teams specialize in one category then teach others
 - **Pre/post questionnaire mode** for research data collection (Likert scales)
 - **Hint system** with score penalties (-20% / -40%)
 - **PDF & JSON export** of game results with pedagogical content
 - **Cloud upload** to Seafile for instant sharing via QR code
-- **Fully responsive** — presenter view (desktop) + player view (mobile)
+- **Fully responsive**: presenter view (desktop) and player view (mobile)
 
 ---
 
@@ -55,14 +55,14 @@ PORT=3001 node server.js
 CONFIG → QUESTION INTRO → RESEARCH → ANSWER → REVEAL → IMPACT → [NEXT QUESTION] → FINAL → BILAN MAP
 ```
 
-1. **Config** — Set number of teams, timer duration, question count, multiplayer/questionnaire mode
-2. **Question Intro** — 3D globe zooms to the region of interest
-3. **Research** — Teams discuss and research (configurable timer with pause)
-4. **Answer** — Each team places a marker on the map
-5. **Reveal** — Target zone shown, distances calculated, points awarded (0–1000 per question, exponential decay)
-6. **Impact** — Key environmental/social data about the location
-7. **Final** — Podium, per-category stats, full export
-8. **Bilan Map** — Overview of all answers across all questions
+1. **Config**: set number of teams, timer duration, question count, multiplayer/questionnaire mode
+2. **Question Intro**: 3D globe zooms to the region of interest
+3. **Research**: teams discuss and research (configurable timer with pause)
+4. **Answer**: each team places a marker on the map
+5. **Reveal**: target zone shown, distances calculated, points awarded (0 to 1000 per question, exponential decay)
+6. **Impact**: key environmental and social data about the location
+7. **Final**: podium, per-category stats, full export
+8. **Bilan Map**: overview of all answers across all questions
 
 ### Multiplayer
 
@@ -70,7 +70,7 @@ The presenter opens the app on a projector. Students scan a QR code to join on t
 
 ### Questionnaire Mode
 
-When enabled, players fill a 6-item Likert questionnaire before the game (pre-test) and a 9-item questionnaire after (post-test). Responses are collected server-side and exported with game data — designed for research on learning outcomes.
+When enabled, players fill a 6-item Likert questionnaire before the game (pre-test) and a 9-item questionnaire after (post-test). Responses are collected server-side and exported with game data for research on learning outcomes.
 
 ---
 
@@ -90,7 +90,7 @@ When enabled, players fill a 6-item Likert questionnaire before the game (pre-te
 ```
 aiguessr/
 ├── src/
-│   ├── App.jsx                   # Root — routes to HostApp or PlayerApp
+│   ├── App.jsx                   # Root, routes to HostApp or PlayerApp
 │   ├── screens/
 │   │   ├── ConfigScreen.jsx      # Game setup + QR code generation
 │   │   ├── QuestionIntroScreen.jsx  # 3D globe intro
@@ -126,19 +126,19 @@ Copy `.env.example` to `.env` and fill in values:
 |----------|---------|-------------|
 | `PORT` | `3001` | Server port |
 | `SEAFILE_URL` | `https://drive.uca.fr` | Seafile instance URL (optional) |
-| `SEAFILE_REPO_TOKEN` | — | Seafile repo token for cloud upload (optional) |
+| `SEAFILE_REPO_TOKEN` | (none) | Seafile repo token for cloud upload (optional) |
 
-The Seafile integration is optional — without it, PDF and JSON exports still work locally via browser download.
+The Seafile integration is optional. Without it, PDF and JSON exports still work locally via browser download.
 
 ---
 
 ## Pedagogical Design
 
-AIGuessr was designed as a research instrument for studying how serious games can develop **AI materiality awareness** among management students. The game is grounded in:
+AIGuessr was built as a research instrument to study how serious games can develop **AI materiality awareness** among management students. It draws on:
 
-- **Experiential learning** (Kolb, 1984) — learning by doing, not lecturing
-- **Jigsaw classroom** (Aronson, 1978) — teams specialize, then cross-teach
-- **Design Science Research** (Hevner et al., 2004) — iterative design-evaluate cycles
+- **Experiential learning** (Kolb, 1984): learning by doing rather than by lecture
+- **Jigsaw classroom** (Aronson, 1978): teams specialize, then cross-teach
+- **Design Science Research** (Hevner et al., 2004): iterative design and evaluation cycles
 
 ### Question Categories
 
@@ -161,4 +161,4 @@ If you use AIGuessr in your research or teaching, please cite:
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
