@@ -1,7 +1,7 @@
 """
 Cronbach's alpha computation for AIGuessr research data.
 
-Reads the item-level Clermont data and computes internal consistency
+Reads the item-level Site A data and computes internal consistency
 (Cronbach's alpha) for each construct, pre and post intervention.
 
 Requirements: pandas, numpy
@@ -27,7 +27,7 @@ def cronbach_alpha(df):
 
 
 def main():
-    data_path = "research-data/data_clermont_items.csv"
+    data_path = "research-data/data_site_a_items.csv"
     try:
         df = pd.read_csv(data_path)
     except FileNotFoundError:
@@ -50,7 +50,7 @@ def main():
         },
     }
 
-    print("AIGuessr - Cronbach's Alpha (Clermont, retrospective pretest)")
+    print("AIGuessr - Cronbach's Alpha (Site A, retrospective pretest)")
     print("=" * 65)
     print(f"{'Construct':<38} {'Phase':<6} {'alpha':>6} {'n':>5}")
     print("-" * 65)

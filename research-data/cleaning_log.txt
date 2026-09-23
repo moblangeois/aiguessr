@@ -3,9 +3,9 @@ AIGuessr — Data Cleaning Log
 
 Decisions:
   - Duplicate pre responses: kept first per participant (earliest timestamp)
-  - Clermont: retrospective pretest (pre and post assessed simultaneously after intervention)
-  - Moulins: traditional pretest (pre assessed before, post assessed after intervention)
-  - Moulins 'M17' vs 'M13' (Session 3): treated as distinct players
+  - Site A: retrospective pretest (pre and post assessed simultaneously after intervention)
+  - Site B: traditional pretest (pre assessed before, post assessed after intervention)
+  - Site B 'M17' vs 'M13' (Session 3): treated as distinct players
     (different game scores: 1328 vs 848). Neither submitted post data.
   - Cohen's dz computed as mean(delta) / sd(delta) for paired designs
   - Holm-Bonferroni correction applied across 3 constructs per deployment
@@ -15,14 +15,14 @@ Full processing log:
 --------------------------------------------------
 AIGuessr — Complete Data Analysis
 ==================================================
-Loading Clermont data from clermont_wooclap_raw.xlsx
-  M07aw respondents: 34
+Loading Site A data from site_a_raw.xlsx
+  Raw respondents: 34
   Materiality awareness: 31 valid pairs
   Impact representations: 30 valid pairs
   Critical self-efficacy: 30 valid pairs
 
 ======================================================================
-  CLEM07MONT (retrospective pretest)
+  SITE A (retrospective pretest)
 ======================================================================
 
   Materiality awareness (n=31)
@@ -34,7 +34,7 @@ Loading Clermont data from clermont_wooclap_raw.xlsx
     Cohen's dz = 1.698
     Wilcoxon: W = 0.0, p = 3.73e-09 ***
       Holm-Bonferroni corrected: p = 1.12e-08
-    M07ank-biserial r = 1.000
+    Rank-biserial r = 1.000
 
   Impact representations (n=30)
     Pre:   M = 3.20, SD = 0.73
@@ -45,7 +45,7 @@ Loading Clermont data from clermont_wooclap_raw.xlsx
     Cohen's dz = 1.659
     Wilcoxon: W = 4.5, p = 3.73e-08 ***
       Holm-Bonferroni corrected: p = 3.73e-08
-    M07ank-biserial r = 0.979
+    Rank-biserial r = 0.979
 
   Critical self-efficacy (n=30)
     Pre:   M = 2.39, SD = 0.79
@@ -56,17 +56,17 @@ Loading Clermont data from clermont_wooclap_raw.xlsx
     Cohen's dz = 1.825
     Wilcoxon: W = 0.0, p = 7.45e-09 ***
       Holm-Bonferroni corrected: p = 1.49e-08
-    M07ank-biserial r = 1.000
+    Rank-biserial r = 1.000
 
-  Clermont satisfaction:
+  Site A satisfaction:
     Understood Impacts: M = 4.3 (n=30, 87% agree 4-5)
     Engaging Format: M = 4.7 (n=30, 97% agree 4-5)
     Useful Docs: M = 4.4 (n=30, 90% agree 4-5)
-    Would M07ecommend: M = 4.9 (n=30, 97% agree 4-5)
+    Would Recommend: M = 4.9 (n=30, 97% agree 4-5)
 
-Loading Moulins data
+Loading Site B data
 
-  Session 1: moulins_session_1.json
+  Session 1: site_b_session_1.json
     Players: 18, Timer: 30s, Questions: 8
     Pre responses: 27, Post responses: 10
   Session 1: 'M02' submitted 2 pre responses, keeping first
@@ -77,7 +77,7 @@ Loading Moulins data
     Paired pre+post: 10 -> ['M57', 'M05', 'M22', 'M48', 'M04', 'M16', 'M46', 'M47', 'M19', 'M53']
     Pre only (no post): ['M02', 'M35', 'M55', 'M18', 'M07', 'M40']
 
-  Session 2: moulins_session_2.json
+  Session 2: site_b_session_2.json
     Players: 16, Timer: 60s, Questions: 8
     Pre responses: 23, Post responses: 11
   Session 2: 'M24' submitted 3 pre responses, keeping first
@@ -89,7 +89,7 @@ Loading Moulins data
     Paired pre+post: 11 -> ['M24', 'M56', 'M35', 'M09', 'M36', 'M28', 'M42', 'M11', 'M33', 'M01', 'M39']
     Pre only (no post): ['M51', 'M23', 'M31', 'M54']
 
-  Session 3: moulins_session_3.json
+  Session 3: site_b_session_3.json
     Players: 15, Timer: 30s, Questions: 8
     Pre responses: 16, Post responses: 6
   Session 3: 'M15' submitted 3 pre responses, keeping first
@@ -97,7 +97,7 @@ Loading Moulins data
     Paired pre+post: 6 -> ['M12', 'M41', 'M14', 'M38', 'M27', 'M15']
     Pre only (no post): ['M34', 'M52', 'M21', 'M08', 'M29', 'M49', 'M17', 'M13']
 
-  Session 4: moulins_session_4.json
+  Session 4: site_b_session_4.json
     Players: 10, Timer: 60s, Questions: 8
     Pre responses: 11, Post responses: 3
   Session 4: 'M25' submitted 2 pre responses, keeping first
@@ -105,13 +105,13 @@ Loading Moulins data
     Paired pre+post: 3 -> ['M44', 'M26', 'M03']
     Pre only (no post): ['M37', 'M50', 'M06', 'M10', 'M43', 'M25', 'M30']
 
-  Total Moulins paired observations: 30
+  Total Site B paired observations: 30
   Materiality awareness: 30 valid pairs
   Impact representations: 30 valid pairs
   Critical self-efficacy: 30 valid pairs
 
 ======================================================================
-  MOULINS (traditional pretest)
+  SITE B (traditional pretest)
 ======================================================================
 
   Materiality awareness (n=30)
@@ -123,7 +123,7 @@ Loading Moulins data
     Cohen's dz = 1.116
     Wilcoxon: W = 14.5, p = 8.17e-06 ***
       Holm-Bonferroni corrected: p = 2.45e-05
-    M07ank-biserial r = 0.911
+    Rank-biserial r = 0.911
 
   Impact representations (n=30)
     Pre:   M = 3.72, SD = 0.81
@@ -134,7 +134,7 @@ Loading Moulins data
     Cohen's dz = 0.399
     Wilcoxon: W = 64.5, p = 4.62e-02 *
       Holm-Bonferroni corrected: p = 9.23e-02
-    M07ank-biserial r = 0.490
+    Rank-biserial r = 0.490
 
   Critical self-efficacy (n=30)
     Pre:   M = 3.18, SD = 0.76
@@ -145,21 +145,21 @@ Loading Moulins data
     Cohen's dz = 0.343
     Wilcoxon: W = 102.5, p = 1.13e-01 
       Holm-Bonferroni corrected: p = 1.13e-01
-    M07ank-biserial r = 0.369
+    Rank-biserial r = 0.369
 
-  Moulins satisfaction:
+  Site B satisfaction:
     Engaging format: M = 4.7 (n=30, 100% agree 4-5)
     Would recommend: M = 4.8 (n=30, 100% agree 4-5)
 
-  Moulins game performance (N=59 players across 4 sessions):
+  Site B game performance (N=59 players across 4 sessions):
     Mean score: 494
     Mean distance: 2825 km
-    M07esponse rates: 55 pre, 30 post
+    Response rates: 55 pre, 30 post
 
 
 
 ======================================================================
-  COMPAM07ISON — CLEM07MONT vs MOULINS
+  COMPARISON — SITE A vs SITE B
 ======================================================================
 
   Materiality awareness (n=31)
@@ -171,7 +171,7 @@ Loading Moulins data
     Cohen's dz = 1.698
     Wilcoxon: W = 0.0, p = 3.73e-09 ***
       Holm-Bonferroni corrected: p = 1.12e-08
-    M07ank-biserial r = 1.000
+    Rank-biserial r = 1.000
 
   Impact representations (n=30)
     Pre:   M = 3.20, SD = 0.73
@@ -182,7 +182,7 @@ Loading Moulins data
     Cohen's dz = 1.659
     Wilcoxon: W = 4.5, p = 3.73e-08 ***
       Holm-Bonferroni corrected: p = 3.73e-08
-    M07ank-biserial r = 0.979
+    Rank-biserial r = 0.979
 
   Critical self-efficacy (n=30)
     Pre:   M = 2.39, SD = 0.79
@@ -193,16 +193,16 @@ Loading Moulins data
     Cohen's dz = 1.825
     Wilcoxon: W = 0.0, p = 7.45e-09 ***
       Holm-Bonferroni corrected: p = 1.49e-08
-    M07ank-biserial r = 1.000
+    Rank-biserial r = 1.000
 
   Side-by-side effect sizes:
-  Construct                   Clermont d    Moulins d    M07atio
+  Construct                   Site A d    Site B d    Ratio
   ---------------------------------------------------------
   Materiality awareness             1.70         1.12      1.5x
   Impact representations            1.66         0.40      4.2x
   Critical self-efficacy            1.82         0.34      5.3x
 
-Attrition analysis — Moulins (added 2026-07-02):
+Attrition analysis — Site B (added 2026-07-02):
   Pre respondents: 55; completers (paired pre+post): 30; dropouts (pre only): 25
   Baseline comparison completers vs dropouts (Welch t / Mann-Whitney U, two-sided):
     Materiality awareness:  2.15 (0.88) vs 2.28 (1.03), t=-0.50 p=.622 / MWU p=.705
