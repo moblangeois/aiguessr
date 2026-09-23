@@ -13,7 +13,7 @@ Built with React 19, Vite, Tailwind CSS 4, Leaflet, react-globe.gl, and Socket.I
 - **21 sourced questions** across 4 categories: extraction, production, data centers, e-waste
 - **Real-time multiplayer** via WebSocket: one presenter screen plus student devices via QR code
 - **3D globe visualization** with react-globe.gl for question introductions
-- **Jigsaw classroom mode**: teams specialize in one category then teach others
+- **Jigsaw classroom mode**: team members each specialize in one category, then guide their team on the questions of that category
 - **Pre/post questionnaire mode** for research data collection (Likert scales)
 - **Hint system** with score penalties (-20% / -40%)
 - **PDF & JSON export** of game results with pedagogical content
