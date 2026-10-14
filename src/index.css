@@ -197,6 +197,11 @@ h1, h2, h3 {
   filter: var(--tile-filter);
 }
 
+/* Joints clairs entre tuiles sous Chrome (Leaflet #3575) : le mode de fusion les comble */
+.leaflet-container img.leaflet-tile {
+  mix-blend-mode: plus-lighter;
+}
+
 .leaflet-control-attribution {
   font-size: 9px;
 }

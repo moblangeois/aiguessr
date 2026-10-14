@@ -47,7 +47,7 @@ export function Timer({ duration, isPaused, onTimeUp, onTick }) {
             cy="18"
             r="15.5"
             fill="none"
-            className="stroke-slate-200"
+            className="stroke-surface-3"
             strokeWidth="3"
           />
           {/* Cercle de progression */}
@@ -57,7 +57,7 @@ export function Timer({ duration, isPaused, onTimeUp, onTick }) {
             r="15.5"
             fill="none"
             className={`transition-all duration-1000 ${
-              isCritical ? 'stroke-red-500' : isLow ? 'stroke-amber-500' : 'stroke-emerald-500'
+              isCritical ? 'stroke-danger' : isLow ? 'stroke-warm' : 'stroke-text-primary'
             }`}
             strokeWidth="3"
             strokeDasharray={`${percentage} 100`}
@@ -68,7 +68,7 @@ export function Timer({ duration, isPaused, onTimeUp, onTick }) {
 
       {/* Temps affiche */}
       <div className={`font-mono text-3xl font-black transition-all duration-300 ${
-        isCritical ? 'text-red-500 animate-pulse scale-110' : isLow ? 'text-amber-500' : 'text-emerald-600'
+        isCritical ? 'text-danger animate-pulse scale-110' : isLow ? 'text-warm' : 'text-text-primary'
       }`}>
         {formatTime(timeLeft)}
       </div>

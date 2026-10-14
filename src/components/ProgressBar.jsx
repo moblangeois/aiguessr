@@ -78,12 +78,12 @@ export function QuestionProgressDots({ current, total, answers }) {
             transition={{ delay: index * 0.05 }}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               isCurrent
-                ? 'bg-amber-500 ring-2 ring-amber-500/50 ring-offset-2 ring-offset-[#0f1f1a]'
+                ? 'bg-accent ring-2 ring-accent/40 ring-offset-2 ring-offset-surface-0'
                 : isCompleted
                   ? hasAnswer
-                    ? 'bg-emerald-500'
-                    : 'bg-emerald-700'
-                  : 'bg-[#253d34]'
+                    ? 'bg-text-primary'
+                    : 'bg-text-muted'
+                  : 'bg-surface-3'
             }`}
             title={`Question ${index + 1}`}
           />
