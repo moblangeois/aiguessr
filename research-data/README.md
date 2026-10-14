@@ -2,7 +2,7 @@
 
 Pseudonymized data from two formative evaluation episodes of the AIGuessr serious game, reported in:
 
-> Blangeois, M. (2026). Where is the AI everyone is talking about? A serious game that puts its material infrastructure on the map. *Journal of Management Education* (submitted).
+> Where is the AI everyone is talking about? A serious game that puts its material infrastructure on the map. Manuscript submitted to the *Journal of Management Education* (2026).
 
 ## Episodes
 
