@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MapLeaflet } from '../components/MapLeaflet';
 import { categories } from '../data/questions';
+import { GROUP_COLORS } from '../components/Map';
 import { useTranslation } from '../i18n/I18nContext';
 
 function formatTime(seconds) {
@@ -41,6 +42,10 @@ export function PlayerGameScreen({ gameState, groupName, onSubmitAnswer, onDisco
 
   const myRank = ranking.findIndex(r => r.name === groupName) + 1;
   const myScore = scores[groupName] || 0;
+
+  // Couleur de l'équipe : même index que sur l'écran présentateur (ordre de connexion)
+  const teamIndex = (gameState?.groups || []).findIndex(g => g.name === groupName);
+  const teamColor = teamIndex >= 0 ? GROUP_COLORS[teamIndex % GROUP_COLORS.length] : '#0D9488';
 
   const handleMapClick = (lat, lng) => {
     if (hasAnswered) return;
@@ -123,24 +128,57 @@ export function PlayerGameScreen({ gameState, groupName, onSubmitAnswer, onDisco
   }
 
   // Phase research ou answer : carte interactive avec question + timer
+  const timerDuration = gameState?.timerDuration || 0;
+  const timeRatio = timerDuration > 0 ? Math.max(0, Math.min(1, timeRemaining / timerDuration)) : 0;
+  const timerTone = timeRemaining <= 10 ? 'danger' : timeRemaining <= 30 ? 'warm' : 'accent';
+  const timerText = { danger: 'text-danger', warm: 'text-warm', accent: 'text-text-primary' }[timerTone];
+  const timerBar = { danger: 'bg-danger', warm: 'bg-warm', accent: 'bg-accent' }[timerTone];
+
   if (phase === 'research' || phase === 'answer') return (
     <div className="h-screen flex flex-col bg-surface-0">
-      {/* Header compact */}
-      <div className="flex-shrink-0 bg-surface-1 backdrop-blur-sm p-3 shadow-sm border-b border-border">
-        <div className="flex items-center justify-between mb-1">
-          <div className="bg-accent text-text-primary px-2 py-1 rounded-lg font-bold text-xs">
-            Q{(gameState?.currentQuestionIndex || 0) + 1}/{gameState?.totalQuestions || 0}
-          </div>
-          <div className={`px-2 py-1 rounded-lg font-mono font-bold text-xs ${
-            timeRemaining <= 10 ? 'bg-danger/30 text-danger' :
-            timeRemaining <= 30 ? 'bg-warm/30 text-warm' :
-            'bg-accent/30 text-accent'
-          }`}>
-            {formatTime(timeRemaining)}
-          </div>
-          <div className="text-text-secondary font-bold text-xs">{myScore} {t('common.pts')}</div>
+      {/* En-tête : catégorie, progression, question, équipe, minuteur */}
+      <div className="flex-shrink-0 bg-surface-0 px-4 pt-3 pb-3 border-b border-border shadow-sm">
+        <div className="flex items-center justify-between gap-3 text-sm">
+          {category && (
+            <span className="flex items-center gap-2 font-semibold text-text-secondary min-w-0">
+              <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: category.color }} />
+              <span className="truncate">{t('categories.' + question.category)}</span>
+            </span>
+          )}
+          <span className="font-semibold text-text-secondary tabular-nums whitespace-nowrap">
+            {t('reveal.questionProgress', {
+              current: (gameState?.currentQuestionIndex || 0) + 1,
+              total: gameState?.totalQuestions || 0
+            })}
+          </span>
         </div>
-        <div className="text-text-secondary text-xs font-medium leading-tight">{tContent(question, 'question')}</div>
+
+        <p className="mt-2 text-[17px] font-semibold text-text-primary leading-snug">
+          {tContent(question, 'question')}
+        </p>
+
+        <div className="mt-3 flex items-end justify-between gap-3">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="w-3.5 h-3.5 rounded-full flex-shrink-0 ring-2 ring-white shadow" style={{ backgroundColor: teamColor }} />
+            <span className="font-bold text-text-primary truncate">{groupName}</span>
+            <span className="text-text-secondary font-semibold tabular-nums whitespace-nowrap">{myScore} {t('common.pts')}</span>
+          </div>
+          <div className="text-right flex-shrink-0" aria-live="polite">
+            <div className="text-[11px] font-semibold text-text-secondary leading-none mb-1">{t('player.timeLeft')}</div>
+            <div className={`text-3xl font-extrabold tabular-nums leading-none ${timerText}`}>
+              {formatTime(timeRemaining)}
+            </div>
+          </div>
+        </div>
+
+        {timerDuration > 0 && (
+          <div className="mt-2.5 h-1.5 w-full bg-surface-3 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-[width] duration-1000 ease-linear ${timerBar}`}
+              style={{ width: `${timeRatio * 100}%` }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Carte */}
@@ -148,9 +186,12 @@ export function PlayerGameScreen({ gameState, groupName, onSubmitAnswer, onDisco
         {hasAnswered ? (
           <div className="h-full flex items-center justify-center bg-accent/10">
             <div className="text-center">
-              <div className="text-5xl mb-3">✅</div>
+              <svg className="w-14 h-14 mx-auto mb-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" strokeWidth={2} />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7.5 12.5l3 3 6-6.5" />
+              </svg>
               <div className="text-accent font-bold text-lg">{t('player.answerSubmitted')}</div>
-              <div className="text-text-muted text-sm mt-1">{t('player.waitingForReveal')}</div>
+              <div className="text-text-secondary text-sm mt-1">{t('player.waitingForReveal')}</div>
             </div>
           </div>
         ) : (
@@ -159,43 +200,43 @@ export function PlayerGameScreen({ gameState, groupName, onSubmitAnswer, onDisco
               marker={marker}
               onMapClick={handleMapClick}
               height="100%"
+              markerColor={teamColor}
             />
-            {!marker && (
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-warm/90 text-text-primary px-4 py-2 rounded-xl text-sm font-medium shadow-lg z-[1000]">
-                {t('player.placeYourAnswer')}
-              </div>
-            )}
-            {marker && (
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-accent/90 text-text-primary px-4 py-2 rounded-xl text-sm font-medium shadow-lg z-[1000]">
-                {t('player.placeYourAnswer')}
-              </div>
-            )}
+            <div
+              className={`absolute top-3 left-1/2 -translate-x-1/2 w-[calc(100%-5.5rem)] max-w-xs text-center px-3 py-2 rounded-xl text-sm font-semibold shadow-lg z-[1000] pointer-events-none ${
+                marker
+                  ? 'bg-surface-0/95 text-text-primary border border-border'
+                  : 'bg-text-primary/90 text-surface-0'
+              }`}
+            >
+              {marker ? t('player.markerPlaced') : t('player.tapToPlace')}
+            </div>
           </>
         )}
       </div>
 
-      {/* Footer : boutons */}
+      {/* Pied : actions */}
       {!hasAnswered && (
-        <div className="flex-shrink-0 bg-surface-1 border-t border-border p-3 shadow-lg">
+        <div className="flex-shrink-0 bg-surface-0 border-t border-border px-4 pt-3 pb-4 shadow-lg">
           <div className="flex gap-3">
             {marker && (
               <button
                 onClick={() => setMarker(null)}
-                className="flex-1 py-3 bg-surface-3 hover:bg-surface-2 text-text-secondary font-bold rounded-xl border border-border"
+                className="px-5 py-3.5 bg-surface-0 hover:bg-surface-2 text-text-secondary font-semibold rounded-xl border-2 border-border focus-visible:outline-2 focus-visible:outline-accent"
               >
-                {t('common.cancel')}
+                {t('player.clearMarker')}
               </button>
             )}
             <button
               onClick={handleSubmit}
               disabled={!marker || isSubmitting}
-              className={`flex-1 py-3 font-bold text-lg rounded-xl transition-all shadow-lg ${
+              className={`flex-1 py-3.5 font-bold text-lg rounded-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
                 marker && !isSubmitting
-                  ? 'bg-accent hover:bg-accent/80 text-text-primary'
-                  : 'bg-surface-3 text-text-muted cursor-not-allowed'
+                  ? 'bg-accent hover:bg-accent-hover text-white shadow-md'
+                  : 'bg-surface-2 text-text-muted cursor-not-allowed'
               }`}
             >
-              {isSubmitting ? '...' : t('common.submit')}
+              {isSubmitting ? '...' : t('player.submitAnswer')}
             </button>
           </div>
         </div>

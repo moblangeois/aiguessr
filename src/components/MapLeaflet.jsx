@@ -2,7 +2,20 @@ import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-export function MapLeaflet({ marker, onMapClick, height = '100%' }) {
+// Pin en forme de goutte, ancré par sa pointe sur le point choisi
+function pinIcon(color) {
+  return L.divIcon({
+    className: '',
+    html: `<svg width="34" height="46" viewBox="0 0 34 46" style="display:block;filter:drop-shadow(0 3px 4px rgba(15,23,42,0.45))">
+      <path d="M17 2C8.7 2 2 8.6 2 16.8 2 28 17 44 17 44s15-16 15-27.2C32 8.6 25.3 2 17 2z" fill="${color}" stroke="#ffffff" stroke-width="3"/>
+      <circle cx="17" cy="17" r="6" fill="#ffffff"/>
+    </svg>`,
+    iconSize: [34, 46],
+    iconAnchor: [17, 44]
+  });
+}
+
+export function MapLeaflet({ marker, onMapClick, height = '100%', markerColor = '#0D9488' }) {
   const mapRef = useRef(null);
   const containerRef = useRef(null);
   const markerRef = useRef(null);
@@ -18,11 +31,14 @@ export function MapLeaflet({ marker, onMapClick, height = '100%' }) {
       maxBoundsViscosity: 1.0,
       maxBounds: [[-85, -180], [85, 180]],
       zoomControl: true,
-      attributionControl: false
+      attributionControl: true
     });
 
+    map.attributionControl.setPrefix(false);
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
     if (onMapClick) {
@@ -52,22 +68,9 @@ export function MapLeaflet({ marker, onMapClick, height = '100%' }) {
     }
 
     if (marker) {
-      const icon = L.divIcon({
-        className: '',
-        html: `<div style="
-          width: 20px; height: 20px;
-          background: #10b981;
-          border: 3px solid white;
-          border-radius: 50%;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-        "></div>`,
-        iconSize: [20, 20],
-        iconAnchor: [10, 10]
-      });
-
-      markerRef.current = L.marker([marker.lat, marker.lng], { icon }).addTo(mapRef.current);
+      markerRef.current = L.marker([marker.lat, marker.lng], { icon: pinIcon(markerColor) }).addTo(mapRef.current);
     }
-  }, [marker]);
+  }, [marker, markerColor]);
 
   return (
     <div

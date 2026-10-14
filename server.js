@@ -671,6 +671,7 @@ function buildPlayerState(session, groupName) {
     currentQuestion: session.currentQuestion ? {
       id: session.currentQuestion.id,
       question: session.currentQuestion.question,
+      question_en: session.currentQuestion.question_en,
       category: session.currentQuestion.category
     } : null,
     timeRemaining: session.timeRemaining,
