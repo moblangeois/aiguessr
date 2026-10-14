@@ -2,7 +2,7 @@
 
 Pseudonymized data from two formative evaluation episodes of the AIGuessr serious game, reported in:
 
-> Blangeois, M. (2026). Making AI materiality visible: design and formative evaluation of a serious game for management education. *Journal of Management Education* (submitted).
+> Blangeois, M. (2026). Where is the AI everyone is talking about? A serious game that puts its material infrastructure on the map. *Journal of Management Education* (submitted).
 
 ## Episodes
 
@@ -24,11 +24,26 @@ Pseudonymized data from two formative evaluation episodes of the AIGuessr seriou
 
 ## Constructs
 
-Three self-assessed constructs, each measured on a 1-5 Likert scale:
+Three self-assessed constructs, each measured on a 1-5 Likert scale. Episode 1 instrument:
 
 1. **Materiality awareness** (5 items): ability to locate extraction sites, awareness of data center water consumption, knowledge of component lifecycle, semiconductor production geography, assembly labor conditions.
 2. **Impact representations** (4 items): perceived environmental footprint of AI, human rights implications, link between personal usage and geopolitical impacts, local impacts of data centers.
 3. **Critical self-efficacy** (3 items): perceived ability to evaluate socio-environmental impacts, legitimacy to question digital footprint, knowledge of where to find reliable information.
+
+Episode 2 instrument (two items per construct, administered through the game's questionnaire mode, translated from French; column prefixes in `data_site_b_individual.csv`):
+
+| Id | Construct | Item |
+|---|---|---|
+| `mat1` | Materiality awareness | I am able to locate the main extraction sites of the minerals used in AI technologies. |
+| `mat2` | Materiality awareness | I can name at least three critical raw materials needed to manufacture AI chips and servers. |
+| `imp1` | Impact representations | I can describe the path of an AI component, from the extraction of the ore to the data center. |
+| `imp2` | Impact representations | I perceive a link between my digital usage and geopolitical issues related to resources. |
+| `eff1` | Critical self-efficacy | I feel able to question the material impact of an AI technology in a professional context. |
+| `eff2` | Critical self-efficacy | I am able to inform myself independently about the material footprint of a digital technology. |
+| `sat1_useful` | Satisfaction (post only) | The game was useful for my understanding. |
+| `sat2_recommend` | Satisfaction (post only) | I would recommend this game to other students. |
+
+The questionnaire mode of the current code also contains `mat3` and `sat3`, added after episode 2; the episode 2 data have no responses for them.
 
 ## Pseudonymization
 
