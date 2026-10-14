@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, Circle, Polyline, useMapEvents,
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useMapContext } from '../contexts/MapContext';
+import { getTeamColor } from '../data/teamColors';
 
 // Fix pour les icones Leaflet avec Vite
 delete L.Icon.Default.prototype._getIconUrl;
@@ -160,18 +161,6 @@ function MapController({ center, zoom, preserveView }) {
   return null;
 }
 
-// Couleurs pour les groupes
-const GROUP_COLORS = [
-  '#3b82f6', // bleu
-  '#ef4444', // rouge
-  '#10b981', // vert
-  '#f59e0b', // orange
-  '#8b5cf6', // violet
-  '#ec4899', // rose
-  '#06b6d4', // cyan
-  '#84cc16'  // lime
-];
-
 // URLs des tuiles
 const TILE_LAYERS = {
   standard: {
@@ -296,7 +285,7 @@ export function GameMap({
               [targetZone.lat, targetZone.lng]
             ]}
             pathOptions={{
-              color: marker.color || GROUP_COLORS[index % GROUP_COLORS.length],
+              color: marker.color || getTeamColor(index),
               weight: 1,
               opacity: 0.5,
               dashArray: '6, 4'
@@ -335,7 +324,7 @@ export function GameMap({
             key={`historical-${marker.groupName}-${marker.questionId}-${index}`}
             position={[marker.lat, marker.lng]}
             icon={createColoredIcon(
-              marker.color || GROUP_COLORS[index % GROUP_COLORS.length],
+              marker.color || getTeamColor(index),
               marker.category,
               true // isHistorical
             )}
@@ -361,7 +350,7 @@ export function GameMap({
             key={`${marker.groupName}-${marker.questionId || index}`}
             position={[marker.lat, marker.lng]}
             icon={createColoredIcon(
-              marker.color || GROUP_COLORS[index % GROUP_COLORS.length],
+              marker.color || getTeamColor(index),
               marker.category,
               false // not historical
             )}
@@ -397,5 +386,5 @@ export function GameMap({
   );
 }
 
-export { GROUP_COLORS, CATEGORY_ICONS };
+export { CATEGORY_ICONS };
 export default GameMap;

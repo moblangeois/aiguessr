@@ -1,4 +1,4 @@
-import { GROUP_COLORS } from './Map';
+import { getTeamColor } from '../data/teamColors';
 
 export function GroupSelector({ groups, currentIndex, onChange }) {
   return (
@@ -13,7 +13,7 @@ export function GroupSelector({ groups, currentIndex, onChange }) {
               : 'opacity-60 hover:opacity-100'
           }`}
           style={{
-            backgroundColor: GROUP_COLORS[index % GROUP_COLORS.length],
+            backgroundColor: getTeamColor(index),
             color: 'white'
           }}
         >

@@ -165,7 +165,8 @@
     "didYouKnow": "Did you know?",
     "continue": "CONTINUE",
     "questionProgress": "Question {current}/{total}",
-    "slideOf": "{current} / {total}"
+    "slideOf": "{current} / {total}",
+    "sourceLabel": "Source:"
   },
 
   "final": {

@@ -183,7 +183,8 @@ export const questions = [
     },
     explanation: "Le Salar de Atacama au Chili. 3 000 km² avec la concentration de lithium la plus élevée au monde. L'extraction assèche progressivement la région.",
     explanation_en: "The Salar de Atacama in Chile. 3,000 km² with the highest lithium concentration in the world. Extraction is progressively drying out the region.",
-    source: "Rapports environnementaux Chili 2024"
+    source: "Rapports environnementaux Chili 2024",
+    source_en: "Chilean environmental reports 2024"
   },
 
   // ============================================
@@ -403,7 +404,8 @@ export const questions = [
     },
     explanation: "Le Ghana. Entre 300 000 et 1,1 million de personnes travaillent directement dans l'orpaillage artisanal.",
     explanation_en: "Ghana. Between 300,000 and 1.1 million people work directly in artisanal gold mining.",
-    source: "EPA Ghana, études environnementales"
+    source: "EPA Ghana, études environnementales",
+    source_en: "EPA Ghana, environmental studies"
   },
 
   // ============================================
@@ -724,7 +726,8 @@ export const questions = [
     },
     explanation: "The Dalles en Oregon. La ville a poursuivi en justice pour empêcher la divulgation des données - Google finançant les frais.",
     explanation_en: "The Dalles in Oregon. The town sued to prevent data disclosure - with Google funding the legal fees.",
-    source: "Washington Post, documents juridiques Oregon"
+    source: "Washington Post, documents juridiques Oregon",
+    source_en: "Washington Post, Oregon court records"
   },
   {
     id: "datacenter-dublin",
@@ -873,7 +876,8 @@ export const questions = [
     },
     explanation: "Agbogbloshie à Accra, Ghana. Le pays importait ~215 000 tonnes d'e-déchets d'Europe occidentale par an.",
     explanation_en: "Agbogbloshie in Accra, Ghana. The country imported ~215,000 tons of e-waste from Western Europe per year.",
-    source: "Pieter Hugo 'Permanent Error', études environnementales Ghana"
+    source: "Pieter Hugo 'Permanent Error', études environnementales Ghana",
+    source_en: "Pieter Hugo 'Permanent Error', Ghanaian environmental studies"
   },
   {
     id: "ewaste-guiyu",
@@ -1067,7 +1071,8 @@ export const questions = [
     },
     explanation: "Madre de Dios au Pérou. Orpaillage illégal massif dans cette région amazonienne.",
     explanation_en: "Madre de Dios in Peru. Massive illegal gold mining in this Amazon region.",
-    source: "Études environnementales Pérou"
+    source: "Études environnementales Pérou",
+    source_en: "Peruvian environmental studies"
   },
   {
     id: "datacenter-lulea",

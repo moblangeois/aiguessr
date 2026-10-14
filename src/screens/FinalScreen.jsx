@@ -1,7 +1,7 @@
 import { useMemo, useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { GROUP_COLORS } from '../components/Map';
+import { getTeamColor } from '../data/teamColors';
 import { categories } from '../data/questions';
 import { exportGameToJSON, downloadJSON } from '../utils/jsonExporter';
 import { generatePDF, downloadPDF } from '../utils/pdfGenerator';
@@ -56,7 +56,7 @@ function PodiumTab({ ranking, groups, podiumStep, t }) {
               >
                 <span
                   className="w-6 h-6 rounded-full shadow-lg mb-2"
-                  style={{ backgroundColor: GROUP_COLORS[groups.indexOf(ranking[1].name)] }}
+                  style={{ backgroundColor: getTeamColor(groups.indexOf(ranking[1].name)) }}
                 />
                 <div className="text-text-primary font-bold text-base mb-1">{ranking[1].name}</div>
                 <div className="text-accent font-bold text-lg mb-2">
@@ -78,7 +78,7 @@ function PodiumTab({ ranking, groups, podiumStep, t }) {
               >
                 <span
                   className="w-8 h-8 rounded-full shadow-lg mb-2 ring-2 ring-warm/50"
-                  style={{ backgroundColor: GROUP_COLORS[groups.indexOf(ranking[0].name)] }}
+                  style={{ backgroundColor: getTeamColor(groups.indexOf(ranking[0].name)) }}
                 />
                 <div className="text-text-primary font-black text-xl mb-1">{ranking[0].name}</div>
                 <div className="text-warm font-black text-2xl mb-2">
@@ -100,7 +100,7 @@ function PodiumTab({ ranking, groups, podiumStep, t }) {
               >
                 <span
                   className="w-5 h-5 rounded-full shadow-lg mb-2"
-                  style={{ backgroundColor: GROUP_COLORS[groups.indexOf(ranking[2].name)] }}
+                  style={{ backgroundColor: getTeamColor(groups.indexOf(ranking[2].name)) }}
                 />
                 <div className="text-text-primary font-bold text-sm mb-1">{ranking[2].name}</div>
                 <div className="text-accent font-bold text-base mb-2">
@@ -156,7 +156,7 @@ function PodiumTab({ ranking, groups, podiumStep, t }) {
                   </span>
                   <span
                     className="w-4 h-4 rounded-full shadow"
-                    style={{ backgroundColor: GROUP_COLORS[groupIdx >= 0 ? groupIdx : index] }}
+                    style={{ backgroundColor: getTeamColor(groupIdx >= 0 ? groupIdx : index) }}
                   />
                   <span className="text-text-primary font-bold">{team.name}</span>
                 </div>
@@ -337,7 +337,7 @@ function DetailsTab({ questionDetails, answers, groups, t, tContent }) {
                         <div className="flex items-center gap-2">
                           <span
                             className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                            style={{ backgroundColor: GROUP_COLORS[groupIdx >= 0 ? groupIdx : 0] }}
+                            style={{ backgroundColor: getTeamColor(groupIdx >= 0 ? groupIdx : 0) }}
                           />
                           <span className="text-text-secondary font-medium">{groupName}</span>
                         </div>

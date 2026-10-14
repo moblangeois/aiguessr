@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GameGlobe, GROUP_COLORS } from '../components/Globe3D';
+import { GameGlobe } from '../components/Globe3D';
+import { getTeamColor } from '../data/teamColors';
 import { categories } from '../data/questions';
 import { useTranslation } from '../i18n/I18nContext';
 
@@ -61,7 +62,7 @@ export function AnswerScreen({
   };
 
   const markers = marker
-    ? [{ lat: marker.lat, lng: marker.lng, groupName: currentGroup, color: GROUP_COLORS[groupIndex] }]
+    ? [{ lat: marker.lat, lng: marker.lng, groupName: currentGroup, color: getTeamColor(groupIndex) }]
     : [];
 
   const category = question ? categories[question.category] : null;
@@ -106,7 +107,7 @@ export function AnswerScreen({
             <span className="text-text-muted text-lg">{t('answer.yourTurn')}</span>
             <span
               className="px-6 py-2 rounded-xl text-text-inverse font-bold text-2xl md:text-3xl shadow-lg animate-pulse"
-              style={{ backgroundColor: GROUP_COLORS[groupIndex] }}
+              style={{ backgroundColor: getTeamColor(groupIndex) }}
             >
               {currentGroup}
             </span>
@@ -121,11 +122,11 @@ export function AnswerScreen({
                       <span
                         key={group}
                         className="px-2.5 py-1 rounded-lg text-text-inverse text-sm flex items-center gap-1.5"
-                        style={{ backgroundColor: GROUP_COLORS[realIdx] + '90' }}
+                        style={{ backgroundColor: getTeamColor(realIdx) + '90' }}
                       >
                         <span
                           className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: GROUP_COLORS[realIdx] }}
+                          style={{ backgroundColor: getTeamColor(realIdx) }}
                         />
                         {group}
                       </span>

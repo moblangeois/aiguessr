@@ -49,6 +49,7 @@ export function ImpactRevealScreen({
   const stats = impact?.stats || [];
   const realtime = impact?.realtime;
   const explanation = tContent(question, 'explanation');
+  const source = tContent(question, 'source');
 
   // Localize stat fields
   const localizeObj = (obj) => {
@@ -222,6 +223,13 @@ export function ImpactRevealScreen({
       {/* Footer: dots + continue */}
       <div className="flex-shrink-0 bg-surface-1 border-t border-border px-4 py-4 sm:py-5">
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-3">
+          {/* Source des chiffres, visible sur toutes les diapositives */}
+          {source && (
+            <p className="text-sm sm:text-base text-text-secondary text-center">
+              <span className="font-semibold">{t('impact.sourceLabel')}</span> {source}
+            </p>
+          )}
+
           {/* Navigation dots */}
           {totalSlides > 1 && (
             <div className="flex items-center gap-2">

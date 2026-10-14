@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GameGlobe, GROUP_COLORS } from '../components/Globe3D';
+import { GameGlobe } from '../components/Globe3D';
+import { getTeamColor } from '../data/teamColors';
 import { useTranslation } from '../i18n/I18nContext';
 
 export function RecapModal({
@@ -32,7 +33,7 @@ export function RecapModal({
           lng: data.lng,
           groupName: groupName,
           questionId: q.id,
-          color: GROUP_COLORS[groupIdx >= 0 ? groupIdx : 0]
+          color: getTeamColor(groupIdx >= 0 ? groupIdx : 0)
         });
       });
     });
@@ -123,7 +124,7 @@ export function RecapModal({
                           </span>
                           <span
                             className="w-4 h-4 rounded-full"
-                            style={{ backgroundColor: GROUP_COLORS[groupIdx >= 0 ? groupIdx : index] }}
+                            style={{ backgroundColor: getTeamColor(groupIdx >= 0 ? groupIdx : index) }}
                           />
                           <span className="text-text-primary font-medium">{team.name}</span>
                         </div>
@@ -149,7 +150,7 @@ export function RecapModal({
                     >
                       <span
                         className="w-3 h-3 rounded-full"
-                        style={{ backgroundColor: GROUP_COLORS[index] }}
+                        style={{ backgroundColor: getTeamColor(index) }}
                       />
                       <span className="text-text-muted text-sm truncate">{group}</span>
                     </div>

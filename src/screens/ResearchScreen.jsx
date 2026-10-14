@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GameGlobe, GROUP_COLORS } from '../components/Globe3D';
+import { GameGlobe } from '../components/Globe3D';
+import { getTeamColor } from '../data/teamColors';
 import { Timer } from '../components/Timer';
 import { categories } from '../data/questions';
 import { QuestionProgressDots } from '../components/ProgressBar';
@@ -58,7 +59,7 @@ export function ResearchScreen({
             questionIndex: qIdx + 1,
             questionName: tContent(q.target, 'name') || `Question ${qIdx + 1}`,
             distance: data.distance,
-            color: GROUP_COLORS[groupIdx >= 0 ? groupIdx : 0],
+            color: getTeamColor(groupIdx >= 0 ? groupIdx : 0),
             category: q.category
           });
         });

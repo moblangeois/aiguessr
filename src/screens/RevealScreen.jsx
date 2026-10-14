@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GameGlobe, GROUP_COLORS } from '../components/Globe3D';
+import { GameGlobe } from '../components/Globe3D';
+import { getTeamColor } from '../data/teamColors';
 import { useTranslation } from '../i18n/I18nContext';
 import { categories } from '../data/questions';
 
@@ -52,7 +53,7 @@ export function RevealScreen({
         groupName: result.groupName,
         distance: result.distance,
         points: result.points,
-        color: GROUP_COLORS[groupIdx >= 0 ? groupIdx : index]
+        color: getTeamColor(groupIdx >= 0 ? groupIdx : index)
       };
     });
   }, [results, groups, revealedCount]);
@@ -179,7 +180,7 @@ export function RevealScreen({
                       </span>
                       <span
                         className="w-4 h-4 rounded-full flex-shrink-0 ring-2 ring-white shadow"
-                        style={{ backgroundColor: GROUP_COLORS[groupIdx >= 0 ? groupIdx : displayIndex] }}
+                        style={{ backgroundColor: getTeamColor(groupIdx >= 0 ? groupIdx : displayIndex) }}
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5">
@@ -258,7 +259,7 @@ export function RevealScreen({
                   </svg>
                   <div className="min-w-0">
                     <span className="font-bold text-warm-hover text-base">{t('reveal.didYouKnow')}</span>
-                    <p className="text-text-primary text-base leading-snug mt-0.5 line-clamp-2">{tContent(question, 'explanation')}</p>
+                    <p className="text-text-primary text-base leading-snug mt-0.5 line-clamp-3">{tContent(question, 'explanation')}</p>
                   </div>
                 </motion.div>
               )}

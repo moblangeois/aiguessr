@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { GameGlobe, GROUP_COLORS } from '../components/Globe3D';
+import { GameGlobe } from '../components/Globe3D';
+import { getTeamColor } from '../data/teamColors';
 import { useTranslation } from '../i18n/I18nContext';
 import { categories, questions as allQuestionsBank } from '../data/questions';
 
@@ -70,7 +71,7 @@ export function BilanMapScreen({
           groupName: groupName,
           distance: data.distance,
           points: data.points,
-          color: GROUP_COLORS[groupIdx >= 0 ? groupIdx : 0] + '80',
+          color: getTeamColor(groupIdx >= 0 ? groupIdx : 0) + '80',
           questionId: q.id
         });
       });
@@ -203,7 +204,7 @@ export function BilanMapScreen({
                 >
                   <span
                     className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: GROUP_COLORS[index] }}
+                    style={{ backgroundColor: getTeamColor(index) }}
                   />
                   <span className="text-text-secondary text-sm">{group}</span>
                 </div>

@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QRCodeSVG } from 'qrcode.react';
-import { GROUP_COLORS } from '../components/Map';
+import { getTeamColor } from '../data/teamColors';
 import { categories, getTotalQuestionCount, getQuestionCountByCategory } from '../data/questions';
 import { useTranslation } from '../i18n/I18nContext';
 
@@ -314,7 +314,7 @@ export function ConfigScreen({ onStart, multiplayer }) {
                       <div className="grid grid-cols-2 gap-2">
                         {groupNames.map((name, index) => (
                           <div key={index} className="relative">
-                            <div className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full shadow-lg" style={{ backgroundColor: GROUP_COLORS[index] }} />
+                            <div className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full shadow-lg" style={{ backgroundColor: getTeamColor(index) }} />
                             <input type="text" value={name} onChange={(e) => handleNameChange(index, e.target.value)} placeholder={t("config.teamPlaceholder", { index: index + 1 })} className="w-full pl-8 pr-3 py-2 bg-surface-2 border-2 border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all text-sm" />
                           </div>
                         ))}

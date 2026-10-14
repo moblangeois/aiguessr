@@ -1,4 +1,4 @@
-import { GROUP_COLORS } from './Map';
+import { getTeamColor } from '../data/teamColors';
 
 export function ScoreBoard({ ranking, compact = false }) {
   if (!ranking || ranking.length === 0) return null;
@@ -14,7 +14,7 @@ export function ScoreBoard({ ranking, compact = false }) {
             <span className="flex items-center gap-2">
               <span
                 className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: GROUP_COLORS[index % GROUP_COLORS.length] }}
+                style={{ backgroundColor: getTeamColor(index) }}
               />
               <span className="text-gray-300">{index + 1}. {team.name}</span>
             </span>
@@ -48,7 +48,7 @@ export function ScoreBoard({ ranking, compact = false }) {
             </span>
             <span
               className="w-4 h-4 rounded-full"
-              style={{ backgroundColor: GROUP_COLORS[index % GROUP_COLORS.length] }}
+              style={{ backgroundColor: getTeamColor(index) }}
             />
             <span className="text-white font-medium">{team.name}</span>
           </span>

@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MapLeaflet } from '../components/MapLeaflet';
 import { categories } from '../data/questions';
-import { GROUP_COLORS } from '../components/Map';
+import { getTeamColor } from '../data/teamColors';
 import { useTranslation } from '../i18n/I18nContext';
 
 function formatTime(seconds) {
@@ -45,7 +45,7 @@ export function PlayerGameScreen({ gameState, groupName, onSubmitAnswer, onDisco
 
   // Couleur de l'équipe : même index que sur l'écran présentateur (ordre de connexion)
   const teamIndex = (gameState?.groups || []).findIndex(g => g.name === groupName);
-  const teamColor = teamIndex >= 0 ? GROUP_COLORS[teamIndex % GROUP_COLORS.length] : '#0D9488';
+  const teamColor = teamIndex >= 0 ? getTeamColor(teamIndex) : '#0D9488';
 
   const handleMapClick = (lat, lng) => {
     if (hasAnswered) return;

@@ -3,6 +3,7 @@ import Globe from 'react-globe.gl';
 import { useMapContext } from '../contexts/MapContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { useTranslation } from '../i18n/I18nContext';
+import { getTeamColor } from '../data/teamColors';
 
 // URLs des tuiles dynamiques (zoom infini haute résolution)
 const TILE_PROVIDERS = {
@@ -17,17 +18,6 @@ const TILE_PROVIDERS = {
 // URL du GeoJSON des pays (Natural Earth)
 const COUNTRIES_GEOJSON_URL = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson';
 
-// Couleurs pour les groupes
-const GROUP_COLORS = [
-  '#3b82f6', // bleu
-  '#ef4444', // rouge
-  '#10b981', // vert
-  '#f59e0b', // orange
-  '#8b5cf6', // violet
-  '#ec4899', // rose
-  '#06b6d4', // cyan
-  '#84cc16'  // lime
-];
 
 // Icones SVG par categorie (pour les labels)
 const CATEGORY_ICONS = {
@@ -295,7 +285,7 @@ export function GameGlobe({
       points.push({
         lat: marker.lat,
         lng: marker.lng,
-        color: marker.color || GROUP_COLORS[index % GROUP_COLORS.length],
+        color: marker.color || getTeamColor(index),
         size: 0.8,
         name: marker.groupName,
         distance: marker.distance,
@@ -312,7 +302,7 @@ export function GameGlobe({
         points.push({
           lat: marker.lat,
           lng: marker.lng,
-          color: marker.color || GROUP_COLORS[index % GROUP_COLORS.length],
+          color: marker.color || getTeamColor(index),
           size: 0.5,
           name: marker.groupName,
           distance: marker.distance,
@@ -350,7 +340,7 @@ export function GameGlobe({
       startLng: marker.lng,
       endLat: targetZone.lat,
       endLng: targetZone.lng,
-      color: marker.color || GROUP_COLORS[index % GROUP_COLORS.length]
+      color: marker.color || getTeamColor(index)
     }));
   }, [markers, targetZone, showDistanceLines, showTarget]);
 
@@ -541,7 +531,7 @@ export function GameGlobe({
                 <div key={i} className="flex items-center gap-2">
                   <span
                     className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: m.color || GROUP_COLORS[i % GROUP_COLORS.length] }}
+                    style={{ backgroundColor: m.color || getTeamColor(i) }}
                   />
                   <span>{m.groupName}</span>
                   {m.distance !== undefined && <span className="text-text-muted">({m.distance} km)</span>}
@@ -565,5 +555,5 @@ export function GameGlobe({
   );
 }
 
-export { GROUP_COLORS, CATEGORY_ICONS };
+export { CATEGORY_ICONS };
 export default GameGlobe;

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { GROUP_COLORS } from '../components/Globe3D';
+import { getTeamColor } from '../data/teamColors';
 import { categories } from '../data/questions';
 import { useTranslation } from '../i18n/I18nContext';
 
@@ -184,7 +184,7 @@ export function BlindAnswerScreen({
                   </span>
                   <span
                     className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: GROUP_COLORS[gIdx] }}
+                    style={{ backgroundColor: getTeamColor(gIdx) }}
                   />
                   <span className="text-text-secondary text-sm font-medium truncate max-w-[60px]">
                     {team.name}
@@ -259,7 +259,7 @@ export function BlindAnswerScreen({
                   <div className="flex items-center gap-2 mb-2">
                     <div
                       className="w-4 h-4 rounded-full shadow"
-                      style={{ backgroundColor: GROUP_COLORS[index] }}
+                      style={{ backgroundColor: getTeamColor(index) }}
                     />
                     <span className="font-bold text-text-secondary text-base md:text-lg">{groupName}</span>
                     <span className="text-lg">{statusIcon}</span>
