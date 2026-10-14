@@ -6,28 +6,28 @@ export const categories = {
   extraction: {
     name: "Extraction minière",
     name_en: "Mining & Extraction",
-    color: "#ef4444",
+    color: "#A8431C", // ocre rouille
     description: "Mines et extraction des matières premières critiques",
     description_en: "Mines and extraction of critical raw materials"
   },
   production: {
     name: "Production & Assemblage",
     name_en: "Production & Assembly",
-    color: "#f59e0b",
+    color: "#B98A2E", // laiton
     description: "Fabrication des semi-conducteurs et assemblage",
     description_en: "Semiconductor manufacturing and assembly"
   },
   datacenter: {
     name: "Data Centers",
     name_en: "Data Centers",
-    color: "#3b82f6",
+    color: "#3E6A84", // ardoise (l'eau, l'électricité)
     description: "Infrastructure et consommation énergétique",
     description_en: "Infrastructure and energy consumption"
   },
   dechets: {
     name: "Déchets électroniques",
     name_en: "Electronic Waste",
-    color: "#10b981",
+    color: "#5F6F35", // lichen
     description: "E-waste et fin de vie des équipements",
     description_en: "E-waste and end-of-life equipment"
   }

@@ -121,6 +121,8 @@ export function useMultiplayerSession() {
 
     socket.on('answer-received', (data) => {
       onAnswerReceivedRef.current?.(data);
+      // Côté téléphone : combien d'équipes ont déjà répondu
+      setGameState(prev => prev ? { ...prev, answeredCount: data.answeredCount, totalGroups: data.totalGroups } : prev);
     });
 
     socket.on('timer-sync', ({ timeRemaining }) => {

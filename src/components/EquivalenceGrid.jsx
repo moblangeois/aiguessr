@@ -97,7 +97,7 @@ export function EquivalenceGrid({
             }}
             className="flex items-center justify-center"
             style={{
-              color: index < revealedCount ? color : '#374151'
+              color: index < revealedCount ? color : 'var(--surface-3)'
             }}
           >
             <IconComponent className={getIconSize()} />
@@ -197,7 +197,7 @@ export function PercentageBar({
               opacity: i < revealed ? 1 : 0.15,
               scale: i < revealed ? 1 : 0.8
             }}
-            style={{ color: i < revealed ? color : '#374151' }}
+            style={{ color: i < revealed ? color : 'var(--surface-3)' }}
             className="w-4 h-4"
           >
             <IconComponent className="w-full h-full" />
@@ -368,7 +368,7 @@ export function AccumulationStack({
                     opacity: idx < revealed ? 1 : 0.1,
                     y: 0
                   }}
-                  style={{ color: idx < revealed ? color : '#374151' }}
+                  style={{ color: idx < revealed ? color : 'var(--surface-3)' }}
                   className="w-6 h-6"
                 >
                   <IconComponent className="w-full h-full" />

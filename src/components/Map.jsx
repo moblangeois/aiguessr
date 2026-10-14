@@ -164,8 +164,8 @@ function MapController({ center, zoom, preserveView }) {
 // URLs des tuiles
 const TILE_LAYERS = {
   standard: {
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://opentopomap.org">OpenTopoMap</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   },
   satellite: {
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -300,8 +300,8 @@ export function GameMap({
               center={[targetZone.lat, targetZone.lng]}
               radius={targetZone.radius * 1000}
               pathOptions={{
-                color: '#10b981',
-                fillColor: '#10b981',
+                color: '#A8431C',
+                fillColor: '#A8431C',
                 fillOpacity: 0.15,
                 weight: 2,
                 dashArray: '5, 5'
@@ -309,7 +309,7 @@ export function GameMap({
             />
             <Marker
               position={[targetZone.lat, targetZone.lng]}
-              icon={createTargetIcon('#10b981')}
+              icon={createTargetIcon('#A8431C')}
             >
               <Popup>
                 <div className="font-bold text-emerald-600">{targetZone.name}</div>

@@ -163,7 +163,8 @@
     "sinceStart": "Since this workshop started...",
     "atRate": "(at a rate of {rate} {unit}/{per})",
     "didYouKnow": "Did you know?",
-    "continue": "CONTINUE",
+    "continue": "Continue",
+    "sheet": "Impact sheet",
     "questionProgress": "Question {current}/{total}",
     "slideOf": "{current} / {total}",
     "sourceLabel": "Source:"
@@ -261,7 +262,24 @@
     "yourScore": "Your score",
     "gameOver": "Game over!",
     "finalRank": "Final rank",
-    "thankYou": "Thanks for playing!"
+    "thankYou": "Thanks for playing!",
+    "tagline": "Where is the AI everyone is talking about?",
+    "yourTeam": "Your team",
+    "lobbyStatus": "Waiting for the start · {count} team(s) connected",
+    "remaining": "left",
+    "yourPoint": "Your point",
+    "confirmPoint": "Submit this point",
+    "tapHint": "Tap the map to place your point.",
+    "pointRecorded": "Point recorded",
+    "answeredOf": "{count} of {total} teams",
+    "watchScreen": "Watch the screen: the reveal comes once every team has answered.",
+    "yourPointIs": "Your point is",
+    "fromSite": "from the actual site: {name}",
+    "actualSite": "The actual site: {name}",
+    "noPoint": "No point placed this round.",
+    "thisRound": "This round",
+    "total": "Total",
+    "rankOf": "{rank} of {total}"
   },
 
   "questionnaire": {

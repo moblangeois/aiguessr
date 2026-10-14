@@ -91,7 +91,7 @@ export function RecapModal({
                 />
 
                 {/* Badge progression */}
-                <div className="absolute top-4 left-4 bg-accent text-text-primary px-4 py-2 rounded-xl font-bold shadow-lg">
+                <div className="absolute top-4 left-4 bg-accent text-text-inverse px-4 py-2 rounded-xl font-bold shadow-lg">
                   {t('recap.progress', { answered: answeredCount, total: questions.length })}
                 </div>
               </div>

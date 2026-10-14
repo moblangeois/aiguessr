@@ -76,7 +76,7 @@ export function ResearchScreen({
           <div className="flex items-center justify-between mb-2">
             {/* Gauche: Question, catégorie, dots */}
             <div className="flex items-center gap-3">
-              <div className="bg-accent text-text-primary px-4 py-1.5 rounded-xl font-black text-base md:text-lg shadow-lg">
+              <div className="bg-accent text-text-inverse px-4 py-1.5 rounded-xl font-black text-base md:text-lg shadow-lg">
                 Q{questionIndex + 1}/{totalQuestions}
               </div>
               {category && (
@@ -158,7 +158,7 @@ export function ResearchScreen({
               <p className="text-4xl text-text-primary font-black mb-6">{t('common.pause').toUpperCase()}</p>
               <button
                 onClick={onTogglePause}
-                className="px-10 py-4 bg-accent hover:bg-accent/80 text-text-primary font-bold text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-lg"
+                className="px-10 py-4 bg-accent hover:bg-accent/80 text-text-inverse font-bold text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-lg"
               >
                 {t('common.resume')}
               </button>
@@ -178,7 +178,7 @@ export function ResearchScreen({
           </button>
           <button
             onClick={onGoToAnswers}
-            className="px-12 py-4 bg-warm hover:bg-warm/80 text-text-primary font-black text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-xl shadow-warm/30"
+            className="px-12 py-4 bg-warm hover:bg-warm/80 text-text-inverse font-black text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-xl shadow-warm/30"
           >
             {t('research.goToAnswers')}
           </button>
@@ -223,7 +223,7 @@ export function ResearchScreen({
                       setShowSkipConfirm(false);
                       onSkipToFinal();
                     }}
-                    className="flex-1 px-6 py-3 bg-danger hover:bg-danger/80 text-text-primary font-bold rounded-xl transition-all"
+                    className="flex-1 px-6 py-3 bg-danger hover:bg-danger/80 text-text-inverse font-bold rounded-xl transition-all"
                   >
                     {t('common.end')}
                   </button>

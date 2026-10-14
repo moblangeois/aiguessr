@@ -204,7 +204,7 @@ export async function generatePDF(gameData) {
   doc.text('Les 4 étapes du cycle de vie', margin, yPos);
   yPos += 10;
 
-  const stageColors = ['#ef4444', '#f59e0b', '#3b82f6', '#8b5cf6'];
+  const stageColors = ['#A8431C', '#B98A2E', '#3E6A84', '#5F6F35'];
   pedagogicalContent.introduction.stages.forEach((stage, i) => {
     const rgb = hexToRgb(stageColors[i]);
     doc.setFillColor(rgb.r, rgb.g, rgb.b);

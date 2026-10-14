@@ -6,7 +6,7 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     const stored = localStorage.getItem('aiguessr-theme');
     if (stored) return stored;
-    if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
+    // Papier par défaut : c'est le mode lisible au vidéoprojecteur en salle éclairée
     return 'light';
   });
 

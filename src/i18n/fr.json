@@ -163,7 +163,8 @@
     "sinceStart": "Depuis le début de cet atelier...",
     "atRate": "(au rythme de {rate} {unit}/{per})",
     "didYouKnow": "Le saviez-vous ?",
-    "continue": "CONTINUER",
+    "continue": "Continuer",
+    "sheet": "Fiche d'impact",
     "questionProgress": "Question {current}/{total}",
     "slideOf": "{current} / {total}",
     "sourceLabel": "Source :"
@@ -261,7 +262,24 @@
     "yourScore": "Votre score",
     "gameOver": "Partie terminée !",
     "finalRank": "Position finale",
-    "thankYou": "Merci d'avoir joué !"
+    "thankYou": "Merci d'avoir joué !",
+    "tagline": "Où est l'IA dont tout le monde parle ?",
+    "yourTeam": "Votre équipe",
+    "lobbyStatus": "En attente du lancement · {count} équipe(s) connectée(s)",
+    "remaining": "reste",
+    "yourPoint": "Votre point",
+    "confirmPoint": "Valider ce point",
+    "tapHint": "Touchez la carte pour poser votre point.",
+    "pointRecorded": "Point enregistré",
+    "answeredOf": "{count} équipe(s) sur {total}",
+    "watchScreen": "Regardez l'écran : la révélation arrive quand toutes les équipes ont répondu.",
+    "yourPointIs": "Votre point est à",
+    "fromSite": "du site réel : {name}",
+    "actualSite": "Le site réel : {name}",
+    "noPoint": "Pas de point posé pour cette manche.",
+    "thisRound": "Cette manche",
+    "total": "Total",
+    "rankOf": "{rank} sur {total}"
   },
 
   "questionnaire": {

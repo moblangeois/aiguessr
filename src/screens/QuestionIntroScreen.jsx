@@ -51,7 +51,7 @@ export function QuestionIntroScreen({
         >
           <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-4">
-              <div className="bg-accent text-text-primary px-6 py-3 rounded-2xl font-black text-2xl shadow-lg shadow-accent/30">
+              <div className="bg-accent text-text-inverse px-6 py-3 rounded-2xl font-black text-2xl shadow-lg shadow-accent/30">
                 {t('common.question')} {questionIndex + 1}/{totalQuestions}
               </div>
               {category && (
@@ -116,7 +116,7 @@ export function QuestionIntroScreen({
         >
           <button
             onClick={onStart}
-            className="px-10 py-5 bg-accent hover:brightness-110 text-text-primary font-bold text-xl rounded-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-accent/30 flex items-center gap-3"
+            className="px-10 py-5 bg-accent hover:brightness-110 text-text-inverse font-bold text-xl rounded-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-accent/30 flex items-center gap-3"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />

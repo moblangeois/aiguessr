@@ -47,4 +47,21 @@ export function isWithinRadius(lat, lng, target) {
   return distance <= target.radius;
 }
 
-export default { calculateDistance, calculatePoints, isWithinRadius };
+/**
+ * Formate des coordonnées comme sur un relevé : « 10°40′S · 25°50′E »
+ * @param {number} lat - Latitude
+ * @param {number} lng - Longitude
+ * @returns {string}
+ */
+export function formatCoordinates(lat, lng) {
+  const part = (value, pos, neg) => {
+    const abs = Math.abs(value);
+    let deg = Math.floor(abs);
+    let min = Math.round((abs - deg) * 60);
+    if (min === 60) { deg += 1; min = 0; }
+    return `${deg}°${String(min).padStart(2, '0')}′${value >= 0 ? pos : neg}`;
+  };
+  return `${part(lat, 'N', 'S')} · ${part(lng, 'E', 'W')}`;
+}
+
+export default { calculateDistance, calculatePoints, isWithinRadius, formatCoordinates };

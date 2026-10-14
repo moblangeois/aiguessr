@@ -664,7 +664,23 @@ io.on('connection', (socket) => {
 
 // Construire l'état envoyé aux joueurs
 function buildPlayerState(session, groupName) {
+  const question = session.currentQuestion;
+  const questionAnswers = question ? (session.answers[question.id] || {}) : {};
+  // La cible ne part vers les téléphones qu'une fois révélée à l'écran
+  const revealed = question && (session.phase === 'reveal' || session.phase === 'impact');
+
   return {
+    answeredCount: Object.keys(questionAnswers).length,
+    totalGroups: session.groups.length,
+    reveal: revealed ? {
+      target: {
+        lat: question.target?.lat,
+        lng: question.target?.lng,
+        name: question.target?.name,
+        name_en: question.target?.name_en
+      },
+      myAnswer: questionAnswers[groupName] || null
+    } : null,
     phase: session.phase,
     currentQuestionIndex: session.currentQuestionIndex,
     totalQuestions: session.totalQuestions,

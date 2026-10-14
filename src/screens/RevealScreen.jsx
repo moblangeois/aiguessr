@@ -114,7 +114,7 @@ export function RevealScreen({
           initial={{ y: -20, opacity: 0, scale: 0.9 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, type: "spring" }}
-          className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-0 rounded-xl shadow-2xl border border-border pl-4 pr-6 py-2.5 z-10 flex items-center gap-3"
+          className="absolute top-4 left-4 bg-surface-0 rounded-xl shadow-2xl border border-text-primary pl-4 pr-6 py-2.5 z-10 flex items-center gap-3 max-w-[calc(100%-28rem-3rem)]"
           style={{ borderLeft: `6px solid ${category?.color || 'var(--accent)'}` }}
         >
           <svg className="w-7 h-7 flex-shrink-0 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -260,6 +260,11 @@ export function RevealScreen({
                   <div className="min-w-0">
                     <span className="font-bold text-warm-hover text-base">{t('reveal.didYouKnow')}</span>
                     <p className="text-text-primary text-base leading-snug mt-0.5 line-clamp-3">{tContent(question, 'explanation')}</p>
+                    {tContent(question, 'source') && (
+                      <p className="font-mono text-xs text-text-secondary mt-1">
+                        {t('impact.sourceLabel')} {tContent(question, 'source')}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               )}

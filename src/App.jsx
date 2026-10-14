@@ -468,7 +468,8 @@ function HostApp() {
   return (
     <AppTimeProvider>
       <MapProvider>
-        <TopBar />
+        {/* Hors des écrans de jeu seulement : en jeu, la barre recouvrait les en-têtes */}
+        {[SCREENS.CONFIG, SCREENS.QUESTION_INTRO, SCREENS.FINAL, SCREENS.BILAN].includes(currentScreen) && <TopBar />}
 
         <AnimatePresence mode="wait">
           {renderScreen()}

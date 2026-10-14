@@ -1,15 +1,16 @@
 // Palette des équipes, partagée par la carte Leaflet, le globe et les écrans.
 // L'ordre suit l'ordre d'arrivée des équipes : le téléphone et le présentateur
 // calculent chacun la couleur depuis cet index, d'où une source unique.
+// Teintes de pigments, sans la rouille réservée au site réel.
 export const GROUP_COLORS = [
-  '#3b82f6', // bleu
-  '#ef4444', // rouge
-  '#10b981', // vert
-  '#f59e0b', // orange
-  '#8b5cf6', // violet
-  '#ec4899', // rose
-  '#06b6d4', // cyan
-  '#84cc16'  // lime
+  '#2F5C78', // bleu ardoise
+  '#B98A2E', // laiton
+  '#5F6F35', // lichen
+  '#6E3B5E', // lie-de-vin
+  '#2E6B62', // vert-de-gris
+  '#C0705A', // terre cuite
+  '#3A342C', // graphite
+  '#7A8FA6'  // ciel de plomb
 ];
 
 // Couleur de l'équipe d'index donné ; au-delà de 8 équipes, la palette reboucle

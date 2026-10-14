@@ -25,7 +25,7 @@ export function ProgressBar({ current, total, label }) {
   );
 }
 
-export function CircularProgress({ progress, size = 60, strokeWidth = 6, color = "#10b981" }) {
+export function CircularProgress({ progress, size = 60, strokeWidth = 6, color = "#A8431C" }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const offset = circumference - (progress / 100) * circumference;

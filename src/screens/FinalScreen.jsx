@@ -399,14 +399,14 @@ export function FinalScreen({
           angle: 60,
           spread: 55,
           origin: { x: 0, y: 0.7 },
-          colors: ['#10b981', '#f59e0b', '#fbbf24', '#8b5cf6']
+          colors: ['#A8431C', '#B98A2E', '#3E6A84', '#5F6F35', '#F4EEE3']
         });
         confetti({
           particleCount: 4,
           angle: 120,
           spread: 55,
           origin: { x: 1, y: 0.7 },
-          colors: ['#10b981', '#f59e0b', '#fbbf24', '#8b5cf6']
+          colors: ['#A8431C', '#B98A2E', '#3E6A84', '#5F6F35', '#F4EEE3']
         });
 
         if (Date.now() < end) {

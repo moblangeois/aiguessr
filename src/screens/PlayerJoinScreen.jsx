@@ -101,7 +101,7 @@ export function PlayerJoinScreen({ initialCode, onJoin, error: externalError, qu
           <button
             type="submit"
             disabled={!code.trim() || !groupName.trim() || isJoining}
-            className="w-full py-3 bg-accent hover:brightness-110 text-text-primary font-bold text-lg rounded-xl transition-all shadow-lg shadow-accent/30 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-accent hover:brightness-110 text-text-inverse font-bold text-lg rounded-xl transition-all shadow-lg shadow-accent/30 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isJoining ? t('player.connecting') : t('player.join')}
           </button>

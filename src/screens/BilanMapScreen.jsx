@@ -48,7 +48,7 @@ export function BilanMapScreen({
       lat: q.target.lat,
       lng: q.target.lng,
       groupName: tContent(q.target, 'name'),
-      color: categories[q.category]?.color || '#10b981',
+      color: categories[q.category]?.color || '#A8431C',
       category: q.category,
       questionId: q.id
     }));

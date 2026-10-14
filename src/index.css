@@ -1,83 +1,94 @@
 @import "tailwindcss";
 
 /* ============================================
-   AIGuessr Design System
+   AIGuessr Design System : « relevé de terrain »
+   Papier, encre, rouille d'oxyde. L'IA traitée comme un objet
+   géologique : des sites arpentés, des chiffres sourcés.
    ============================================ */
 
-/* --- Light mode (default) --- */
+/* --- Papier (défaut, lisible au vidéoprojecteur en salle éclairée) --- */
 :root {
-  --surface-0: #FFFFFF;
-  --surface-1: #F8FAFC;
-  --surface-2: #F1F5F9;
-  --surface-3: #E2E8F0;
-  --border: #CBD5E1;
-  --border-subtle: #E2E8F0;
+  --surface-0: #F4EEE3;
+  --surface-1: #EDE6D8;
+  --surface-2: #E4DBCA;
+  --surface-3: #D6CBB8;
+  --border: #BFB29C;
+  --border-subtle: #DDD3C2;
 
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
-  --text-inverse: #F1F5F9;
+  --text-primary: #1E1B16;
+  --text-secondary: #5E564B;
+  --text-muted: #8C8273;
+  --text-inverse: #F4EEE3;
 
-  --accent: #0D9488;
-  --accent-hover: #0F766E;
-  --accent-light: #CCFBF1;
-  --accent-muted: #99F6E4;
+  /* Rouille d'oxyde */
+  --accent: #A8431C;
+  --accent-hover: #8C3615;
+  --accent-light: #F1DDD0;
+  --accent-muted: #E2B9A3;
 
-  --warm: #D97706;
-  --warm-hover: #B45309;
-  --warm-light: #FEF3C7;
-  --warm-muted: #FDE68A;
+  /* Laiton */
+  --warm: #9A6B16;
+  --warm-hover: #7C5510;
+  --warm-light: #F0E3C4;
+  --warm-muted: #E2CC97;
 
-  --danger: #DC2626;
-  --danger-light: #FEE2E2;
-  --success: #16A34A;
-  --success-light: #DCFCE7;
+  --danger: #B3261E;
+  --danger-light: #F5D9D3;
+  --success: #4E6B2A;
+  --success-light: #E0E6CC;
 
   /* Scrollbar */
-  --scrollbar-track: #F1F5F9;
-  --scrollbar-thumb: #CBD5E1;
-  --scrollbar-thumb-hover: #94A3B8;
+  --scrollbar-track: #EDE6D8;
+  --scrollbar-thumb: #BFB29C;
+  --scrollbar-thumb-hover: #8C8273;
 
   /* Body background */
-  --body-bg: #F8FAFC;
-  --body-color: #0F172A;
+  --body-bg: #E9E1D2;
+  --body-color: #1E1B16;
+
+  /* Fonds de carte : la topographie passée au sépia */
+  --tile-filter: sepia(.6) saturate(.55) contrast(1.02) brightness(1.03);
+  --map-bg: #EDE5D6;
 }
 
-/* --- Dark mode --- */
+/* --- Ardoise chaude (salle sombre) --- */
 .dark {
-  --surface-0: #0C1222;
-  --surface-1: #131C30;
-  --surface-2: #1A253E;
-  --surface-3: #243352;
-  --border: #2A3A56;
-  --border-subtle: #1E2D4A;
+  --surface-0: #17140F;
+  --surface-1: #1F1B15;
+  --surface-2: #29241C;
+  --surface-3: #353026;
+  --border: #4A4235;
+  --border-subtle: #2E2820;
 
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --text-inverse: #0F172A;
+  --text-primary: #EFE7D8;
+  --text-secondary: #B3A894;
+  --text-muted: #857A68;
+  --text-inverse: #17140F;
 
-  --accent: #2DD4BF;
-  --accent-hover: #5EEAD4;
-  --accent-light: #042F2E;
-  --accent-muted: #0D4F4A;
+  --accent: #D9693A;
+  --accent-hover: #E8865C;
+  --accent-light: #3A1D10;
+  --accent-muted: #5C2C17;
 
-  --warm: #FBBF24;
-  --warm-hover: #FCD34D;
-  --warm-light: #451A03;
-  --warm-muted: #78350F;
+  --warm: #D8A944;
+  --warm-hover: #E7C06A;
+  --warm-light: #3A2C0E;
+  --warm-muted: #5A4516;
 
-  --danger: #F87171;
-  --danger-light: #450A0A;
-  --success: #4ADE80;
-  --success-light: #052E16;
+  --danger: #E06A55;
+  --danger-light: #3D1611;
+  --success: #9DB36A;
+  --success-light: #232B14;
 
-  --scrollbar-track: #131C30;
-  --scrollbar-thumb: #2A3A56;
-  --scrollbar-thumb-hover: #3B4F73;
+  --scrollbar-track: #1F1B15;
+  --scrollbar-thumb: #4A4235;
+  --scrollbar-thumb-hover: #6A604F;
 
-  --body-bg: #0C1222;
-  --body-color: #F1F5F9;
+  --body-bg: #17140F;
+  --body-color: #EFE7D8;
+
+  --tile-filter: sepia(.55) saturate(.5) brightness(.6) contrast(1.15);
+  --map-bg: #1F1B15;
 }
 
 /* --- Tailwind 4 theme tokens --- */
@@ -109,8 +120,23 @@
   --color-success: var(--success);
   --color-success-light: var(--success-light);
 
-  /* Typography */
-  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography : Fraunces pour les titres et les chiffres, Plex pour le texte et les relevés */
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Angles vifs, ombres de papier posé */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 4px;
+  --radius-3xl: 6px;
+  --shadow-sm: 0 1px 2px rgb(30 27 22 / 0.14);
+  --shadow-md: 0 1px 0 rgb(30 27 22 / 0.10), 0 6px 14px -6px rgb(58 42 20 / 0.22);
+  --shadow-lg: 0 1px 0 rgb(30 27 22 / 0.12), 0 12px 24px -10px rgb(58 42 20 / 0.28);
+  --shadow-xl: 0 1px 0 rgb(30 27 22 / 0.12), 0 18px 32px -12px rgb(58 42 20 / 0.32);
+  --shadow-2xl: 0 1px 0 rgb(30 27 22 / 0.14), 0 26px 44px -16px rgb(58 42 20 / 0.38);
   --font-size-display: 3rem;
   --font-size-heading: 1.875rem;
   --font-size-title: 1.5rem;
@@ -128,7 +154,7 @@ html, body, #root {
 }
 
 body {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--body-bg);
@@ -136,11 +162,48 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Titres à empattements optiques ; les chiffres restent alignés */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+}
+
+.tabular-nums, .font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grain de papier, très discret */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .22 0 0 0 0 .12 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Courbes de niveau en filigrane */
+.contour-lines {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23A8431C' stroke-opacity='.16' stroke-width='1'%3E%3Cpath d='M0 120 C 80 80 160 150 220 110 S 360 98 400 120'/%3E%3Cpath d='M0 150 C 80 110 160 180 220 140 S 360 128 400 150'/%3E%3Cpath d='M0 182 C 80 142 160 212 220 172 S 360 160 400 182'/%3E%3Cpath d='M0 215 C 80 175 160 245 220 205 S 360 193 400 215'/%3E%3Cpath d='M0 250 C 80 210 160 280 220 240 S 360 228 400 250'/%3E%3Cpath d='M0 288 C 80 248 160 318 220 278 S 360 266 400 288'/%3E%3Cpath d='M150 40 C 190 30 230 55 225 80 S 170 105 150 80 S 125 48 150 40Z'/%3E%3Cpath d='M160 52 C 185 46 210 60 207 75 S 175 90 162 76 S 147 57 160 52Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 520px;
+}
+
 /* --- Leaflet --- */
 .leaflet-container {
   width: 100%;
   height: 100%;
   z-index: 1;
+  background: var(--map-bg);
+  font-family: var(--font-sans);
+}
+
+.leaflet-tile-pane {
+  filter: var(--tile-filter);
+}
+
+.leaflet-control-attribution {
+  font-size: 9px;
+}
+
+/* Globe : l'imagerie satellite reste lisible (on doit voir la mine depuis l'espace), légèrement virée au sépia */
+.globe-relief canvas {
+  filter: sepia(0.28) saturate(0.85) contrast(1.04);
 }
 
 .custom-marker {

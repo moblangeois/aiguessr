@@ -5,16 +5,6 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useTranslation } from '../i18n/I18nContext';
 import { getTeamColor } from '../data/teamColors';
 
-// URLs des tuiles dynamiques (zoom infini haute résolution)
-const TILE_PROVIDERS = {
-  // ESRI World Imagery - satellite haute résolution
-  esri: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  // OpenStreetMap - carte standard
-  osm: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-  // Fond étoilé
-  background: 'https://unpkg.com/three-globe@2.31.1/example/img/night-sky.png'
-};
-
 // URL du GeoJSON des pays (Natural Earth)
 const COUNTRIES_GEOJSON_URL = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson';
 
@@ -320,7 +310,7 @@ export function GameGlobe({
       points.push({
         lat: targetZone.lat,
         lng: targetZone.lng,
-        color: '#10b981',
+        color: '#A8431C',
         size: 1.2,
         name: targetZone.name,
         isTarget: true,
@@ -377,7 +367,8 @@ export function GameGlobe({
   return (
     <div
       ref={containerRef}
-      style={{ height, width: '100%', position: 'relative', background: isDark ? '#0C1222' : '#f8fafc' }}
+      style={{ height, width: '100%', position: 'relative', background: isDark ? '#17140F' : '#E9E1D2' }}
+      className="globe-relief"
     >
       {/* Style pour l'animation pulse */}
       <style>{`
@@ -399,17 +390,18 @@ export function GameGlobe({
           const clampedZ = Math.min(z, maxZoom);
           return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${clampedZ}/${y}/${x}`;
         }}
-        backgroundImageUrl={isDark ? TILE_PROVIDERS.background : null}
+        // Fond papier ou ardoise : la planète posée sur la table, pas flottant dans l'espace
+        backgroundColor={isDark ? '#17140F' : '#E9E1D2'}
 
-        // Atmosphère accent (style app)
-        atmosphereColor={isDark ? '#2DD4BF' : '#0D9488'}
-        atmosphereAltitude={0.18}
+        // Atmosphère sépia, discrète
+        atmosphereColor={isDark ? '#8A5A3C' : '#C79A6E'}
+        atmosphereAltitude={0.14}
 
         // Frontières des pays (lignes seulement, pas de surface cliquable)
         polygonsData={countries.features}
         polygonCapColor={() => 'rgba(0, 0, 0, 0)'}
         polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
-        polygonStrokeColor={() => isDark ? '#2DD4BF' : '#0D9488'}
+        polygonStrokeColor={() => isDark ? 'rgba(239, 231, 216, 0.55)' : 'rgba(244, 238, 227, 0.75)'}
         polygonAltitude={0.001}
         polygonsTransitionDuration={0}
         onPolygonClick={(polygon, event, coords) => {
@@ -487,7 +479,7 @@ export function GameGlobe({
         ringMaxRadius="maxR"
         ringPropagationSpeed="propagationSpeed"
         ringRepeatPeriod="repeatPeriod"
-        ringColor={() => isDark ? '#2DD4BF80' : '#0D948880'}
+        ringColor={() => isDark ? '#D9693A99' : '#A8431C99'}
 
         // Interactions - clic sur le globe ET sur les océans
         onGlobeClick={handleGlobeClick}
@@ -497,9 +489,11 @@ export function GameGlobe({
         animateIn={true}
       />
 
-      {/* Légende des marqueurs */}
-      {showLegend && <div className="absolute top-4 left-4 z-[1000] bg-surface-1/95 backdrop-blur-sm rounded-xl p-3 border border-border text-text-primary text-sm max-w-[200px] max-h-[50vh] overflow-y-auto shadow-lg">
-        <div className="font-bold text-accent mb-2">{t('globe.legend')}</div>
+      {/* Légende des marqueurs : seulement quand elle a quelque chose à montrer */}
+      {showLegend && (showCategoryLegend
+        ? !!categoryData
+        : (showTarget && targetZone) || markers.length > 0) && <div className="absolute top-4 left-4 z-[1000] bg-surface-0/95 rounded-xl p-3 border border-border text-text-primary text-sm max-w-[220px] max-h-[50vh] overflow-y-auto shadow-lg">
+        <div className="font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary mb-2">{t('globe.legend')}</div>
         <div className="space-y-1 text-xs">
           {/* Mode catégories */}
           {showCategoryLegend && categoryData && (

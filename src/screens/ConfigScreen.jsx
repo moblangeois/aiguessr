@@ -142,18 +142,18 @@ export function ConfigScreen({ onStart, multiplayer }) {
   const needsMultiplayer = selectedMode === 'multiplayer' || selectedMode === 'research';
 
   return (
-    <div className="h-screen bg-surface-0 flex items-center justify-center p-4 overflow-hidden">
-      <div className="bg-surface-1 backdrop-blur-sm rounded-3xl p-8 w-full max-w-4xl shadow-2xl border border-border max-h-[calc(100vh-3rem)] overflow-y-auto">
+    <div className="h-screen bg-surface-0 paper-grain contour-lines flex items-center justify-center p-4 overflow-hidden">
+      <div className="bg-surface-0 rounded-3xl p-8 w-full max-w-4xl shadow-2xl border border-text-primary max-h-[calc(100vh-3rem)] overflow-y-auto">
 
-        {/* Title */}
+        {/* Mot-symbole et question du titre */}
         <div className="text-center mb-6">
-          <h1
-            className="text-5xl font-black bg-clip-text text-transparent mb-2"
-            style={{ backgroundImage: 'linear-gradient(to right, var(--accent), var(--warm))' }}
-          >
-            {t('config.title')}
+          <h1 className="text-6xl font-extrabold tracking-tight leading-none mb-2">
+            AI<em className="font-normal italic text-accent">Guessr</em>
           </h1>
-          <p className="text-accent text-lg">
+          <p className="font-serif italic text-xl text-text-secondary">
+            {t('player.tagline')}
+          </p>
+          <p className="font-mono text-[11px] uppercase tracking-widest text-text-muted mt-2">
             {t('config.subtitle')}
           </p>
         </div>

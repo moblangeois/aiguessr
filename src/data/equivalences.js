@@ -402,9 +402,11 @@ export function getEquivalenceLabel(equivalenceType, count, locale = 'fr') {
 }
 
 // Retourne la couleur de l'équivalence
+// Les pictogrammes sont tous imprimés à l'encre rouille du relevé de terrain ;
+// le paramètre est conservé pour les appelants existants.
+// eslint-disable-next-line no-unused-vars
 export function getEquivalenceColor(equivalenceType) {
-  const equiv = EQUIVALENCES[equivalenceType];
-  return equiv?.color || "#10b981";
+  return 'var(--accent)';
 }
 
 // Retourne le type d'icône pour une équivalence

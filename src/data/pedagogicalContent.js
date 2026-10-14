@@ -27,7 +27,7 @@ export const pedagogicalContent = {
     extraction: {
       title: "PARTIE 1 : Extraction des matières premières",
       title_en: "PART 1: Raw Material Extraction",
-      color: "#ef4444",
+      color: "#A8431C",
       narrative: "Tout commence sous terre...",
       narrative_en: "It all begins underground...",
       intro: `L'IA repose sur des composants électroniques qui nécessitent des dizaines de minéraux et métaux critiques. Ces ressources sont extraites dans des conditions souvent problématiques, avec des conséquences humaines et environnementales majeures.`,
@@ -113,7 +113,7 @@ export const pedagogicalContent = {
     production: {
       title: "PARTIE 2 : Production & Assemblage",
       title_en: "PART 2: Manufacturing & Assembly",
-      color: "#f59e0b",
+      color: "#B98A2E",
       narrative: "Une concentration géographique critique...",
       narrative_en: "A critical geographic concentration...",
       intro: `Une fois les matières premières extraites, elles sont transformées et assemblées en composants électroniques. Cette étape est dominée par l'Asie, avec une concentration géographique qui crée des vulnérabilités stratégiques mondiales.`,
@@ -179,7 +179,7 @@ export const pedagogicalContent = {
     datacenter: {
       title: "PARTIE 3 : Data Centers & Énergie",
       title_en: "PART 3: Data Centers & Energy",
-      color: "#3b82f6",
+      color: "#3E6A84",
       narrative: "L'IA a soif d'énergie...",
       narrative_en: "AI is thirsty for energy...",
       intro: `L'IA nécessite une puissance de calcul colossale, hébergée dans des data centers qui consomment énormément d'énergie et d'eau. Une requête ChatGPT consomme 10 à 25 fois plus d'énergie qu'une recherche Google.`,
@@ -255,7 +255,7 @@ export const pedagogicalContent = {
     dechets: {
       title: "PARTIE 4 : Déchets électroniques",
       title_en: "PART 4: Electronic Waste",
-      color: "#8b5cf6",
+      color: "#5F6F35",
       narrative: "La fin de vie oubliée...",
       narrative_en: "The forgotten end of life...",
       intro: `La fin de vie des équipements informatiques génère des montagnes de déchets électroniques. 62 millions de tonnes en 2022, dont seulement 22% sont correctement recyclés. Le reste finit souvent dans des pays en développement.`,
